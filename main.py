@@ -43,7 +43,7 @@ class PomodoroSession(SQLModel, table=True):  # Database model for Pomodoro sess
     end_time: datetime
     completed: bool = Field(default=False)
 
-# Create tables if they do not exist
+# Create tables if they do notexist
 SQLModel.metadata.create_all(engine)
 
 # Dependency to handle database session
