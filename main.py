@@ -69,7 +69,7 @@ class PomodoroSession(BaseModel):
     end_time: datetime
     completed: bool
 
-# Routes
+#Routes
 @app.post("/tasks", response_model=Task)
 def create_task(task_in: TaskCreate, db: Session = Depends(get_db)):
     # Check if task with the same title already exists
