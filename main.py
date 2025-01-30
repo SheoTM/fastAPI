@@ -9,14 +9,9 @@ from enum import Enum
 
 # Load environment variables
 load_dotenv()
-<<<<<<< HEAD
 
 # Database setup
-=======
->>>>>>> 0a68ae4 (Fix)
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./test.db")  # Default to SQLite
-
-# Database setup
 engine = create_engine(DATABASE_URL, echo=True)
 
 app = FastAPI()
@@ -27,7 +22,6 @@ class TaskStatus(str, Enum):
     IN_PROGRESS = "w trakcie"
     FINISHED = "zakończone"
 
-# Pydantic + SQLModel models
 class TaskBase(SQLModel):
     title: str = Field(..., min_length=3, max_length=100)
     description: Optional[str] = Field(None, max_length=300)
@@ -43,7 +37,7 @@ class PomodoroSession(SQLModel, table=True):  # Database model for Pomodoro sess
     end_time: datetime
     completed: bool = Field(default=False)
 
-# Create tables if they do notexist
+# Create tables if they do not exist
 SQLModel.metadata.create_all(engine)
 
 # Dependency to handle database session
